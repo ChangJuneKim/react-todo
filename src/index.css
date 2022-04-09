@@ -14,7 +14,7 @@ body {
 }
 
 main {
-  margin-top: 7rem;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -31,11 +31,10 @@ a {
 }
 
 .underline {
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   width: 40%;
   height: 0.2rem;
   background-color: #ccc;
-  margin-bottom: 2.5rem;
 }
 
 .center {

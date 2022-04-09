@@ -1,9 +1,13 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import { login } from '../store/auth-slice';
 
 import classes from './DashBoard.module.css';
 
 const DashBoard = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const nameInputRef = useRef();
 
@@ -16,7 +20,7 @@ const DashBoard = () => {
       console.log('이름을 입력해주세요');
       return;
     }
-
+    dispatch(login(enteredName));
     // console.log(enteredName);
     navigate('/todos');
   };

@@ -1,0 +1,22 @@
+.timer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  background-color: blue;
+}
+
+.timer h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 5rem;
+  color: #eee;
+}
+
+@media screen and (max-width: 768px) {
+  .timer {
+    height: 8rem;
+  }
+}

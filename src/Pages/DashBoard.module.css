@@ -1,6 +1,6 @@
 .book {
-  width: 25rem;
-  height: 35rem;
+  width: 30rem;
+  height: 45rem;
   padding: 30px;
   background-color: #b9d9ff;
   border-left: 30px solid #ccc;
@@ -9,7 +9,7 @@
 }
 
 .book h1 {
-  margin: 3rem 0 0.5rem;
+  margin: 3rem 0 1rem;
   font-size: 1.5rem;
   color: #444;
   text-align: center;
@@ -65,7 +65,7 @@
 label {
   position: absolute;
   left: 30%;
-  top: 25%;
+  top: 23%;
   color: #444;
 }
 
@@ -75,9 +75,11 @@ label {
   position: absolute;
   bottom: 2rem;
   right: 2rem;
+  border-radius: 4px;
 }
 
 .btn:hover {
   cursor: pointer;
   transform: scale(1.01);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }

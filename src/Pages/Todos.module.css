@@ -1,0 +1,33 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 80vh;
+  background-color: #44cc88;
+}
+
+.todo-container {
+  display: inline-block;
+  width: 50%;
+  height: 80vh;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .todo {
+    flex-direction: column;
+  }
+  .calendar-container {
+    width: 100%;
+  }
+
+  .todo-container {
+    width: 100%;
+  }
+}
