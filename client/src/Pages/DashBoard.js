@@ -28,7 +28,7 @@ const DashBoard = () => {
   return (
     <div className='center'>
       <div className={classes.book}>
-        <h1>오늘 할 일</h1>
+        <h1>My NOTE</h1>
         <div className='underline'></div>
         <form onSubmit={submitHandler}>
           <label htmlFor='name'>name</label>

@@ -1,0 +1,6 @@
+PORT = server port number
+
+MONGO_URI = mongodb connect uri
+
+JWT_SECRET = some powerful secret string
+JWT_EXPIRE = jwt expire time
