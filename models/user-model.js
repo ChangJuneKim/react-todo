@@ -10,6 +10,11 @@ const UserSchema = new mongoose.Schema(
       trim: true,
     },
 
+    nickname: {
+      type: String,
+      trim: true,
+    },
+
     email: {
       type: String,
       required: [true, '이메일을 입력해주세요.'],

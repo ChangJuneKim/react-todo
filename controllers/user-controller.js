@@ -33,6 +33,7 @@ export const register = asyncHandler(async (req, res) => {
 
   const user = await User.create({
     username,
+    nickname: username,
     email,
     password,
   });
@@ -43,6 +44,7 @@ export const register = asyncHandler(async (req, res) => {
     res.status(StatusCodes.CREATED).json({
       user: {
         username: user.username,
+        nickname: user.username,
         email: user.email,
         id: user._id,
         token,
@@ -74,26 +76,13 @@ export const login = asyncHandler(async (req, res) => {
   const token = user.getSignedJwtToken();
 
   res.status(StatusCodes.OK).json({
+    user: {
+      username: user.username,
+      nickname: user.username,
+      email: user.email,
+      id: user._id,
+      token,
+    },
     message: `환영합니다! ${user.username} 님`,
-    username: user.username,
-    email: user.email,
-    id: user._id,
-    token,
   });
 });
-
-// export const verifyUser = (req, res) => {
-//   let token;
-
-//   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-//     token = req.headers.authorization.split(' ')[1];
-//   }
-
-//   if (!token) {
-//     next(new UnAuthenticatedError('이 경로에 액세스할 수 있는 권한이 없습니다.'));
-//   }
-
-//   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-//   req.user = decoded;
-// };

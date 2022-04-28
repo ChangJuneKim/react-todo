@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { setNickname } from '../store/auth-slice';
+import { openSnackBar } from '../store/snack-slice';
 
 import styles from './DashBoard.module.css';
 import PrivateRoute from './PrivateRoute';
@@ -20,7 +21,7 @@ const Login = () => {
     }
 
     if (user !== null) {
-      nameInputRef.current.value = user.username;
+      nameInputRef.current.value = user.nickname;
     }
   }, [user]);
 
@@ -30,7 +31,7 @@ const Login = () => {
 
     const nameIsValid = enteredName !== '';
     if (!nameIsValid) {
-      console.log('이름입력좀');
+      dispatch(openSnackBar({ type: 'fail', message: '닉네임을 입력해주세요.' }));
       return;
     }
     dispatch(setNickname(enteredName));

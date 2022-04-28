@@ -10,18 +10,22 @@ const padZero = num => {
 
 const Time = () => {
   let now = new Date();
+  const { width } = useWindowDimensions();
 
   const [hour, setHour] = useState(padZero(now.getHours()));
   const [min, setMin] = useState(padZero(now.getMinutes()));
   const [sec, setSec] = useState(padZero(now.getSeconds()));
 
-  const { width } = useWindowDimensions();
-
   useInterval(() => {
     now = new Date();
-    setHour(padZero(now.getHours()));
-    setMin(padZero(now.getMinutes()));
-    setSec(padZero(now.getSeconds()));
+    if (width < 1100) {
+      setHour(padZero(now.getHours()));
+      setMin(padZero(now.getMinutes()));
+    } else {
+      setHour(padZero(now.getHours()));
+      setMin(padZero(now.getMinutes()));
+      setSec(padZero(now.getSeconds()));
+    }
   }, 1000);
 
   let clock = <h1>{`${hour}:${min}:${sec}`}</h1>;

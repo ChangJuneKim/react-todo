@@ -28,6 +28,7 @@
   flex: 20%;
   display: flex;
   margin-right: 0.5rem;
+  color: #eee;
 }
 
 .message {
@@ -38,11 +39,11 @@
 }
 
 .snackbar.success {
-  background-color: #00f593;
+  background-color: #78fac5;
 }
 
 .snackbar.fail {
-  background-color: #ff0033;
+  background-color: #f6a1c2;
   color: #eee;
 }
 
