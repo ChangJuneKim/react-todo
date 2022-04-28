@@ -5,14 +5,15 @@
   justify-content: center;
   align-items: center;
   height: 10rem;
-  background-color: blue;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
 }
 
 .timer h1 {
   margin: 0;
   padding: 0;
   font-size: 5rem;
-  color: #eee;
+  color: #222;
 }
 
 @media screen and (max-width: 768px) {

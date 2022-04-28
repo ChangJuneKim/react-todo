@@ -8,7 +8,7 @@ import { BadRequestError, UnAuthenticatedError } from '../errors/index.js';
 
 export const register = asyncHandler(async (req, res) => {
   const { email, username, password, confirmPassword } = req.body;
-
+  console.log(req.body);
   if (!email || !username || !password || !confirmPassword) {
     throw new BadRequestError('값을 모두 입력해주세요.');
   }
@@ -37,11 +37,17 @@ export const register = asyncHandler(async (req, res) => {
     password,
   });
 
+  const token = user.getSignedJwtToken();
+
   if (user) {
     res.status(StatusCodes.CREATED).json({
-      username: user.username,
-      email: user.email,
-      id: user._id,
+      user: {
+        username: user.username,
+        email: user.email,
+        id: user._id,
+        token,
+      },
+      message: `환영합니다! ${user.username} 님`,
     });
   }
 });
@@ -68,6 +74,7 @@ export const login = asyncHandler(async (req, res) => {
   const token = user.getSignedJwtToken();
 
   res.status(StatusCodes.OK).json({
+    message: `환영합니다! ${user.username} 님`,
     username: user.username,
     email: user.email,
     id: user._id,

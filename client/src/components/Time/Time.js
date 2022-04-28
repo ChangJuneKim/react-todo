@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import classes from './Time.module.css';
+import styles from './Time.module.css';
 import useInterval from '../../hooks/useInterval';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
@@ -15,7 +15,7 @@ const Time = () => {
   const [min, setMin] = useState(padZero(now.getMinutes()));
   const [sec, setSec] = useState(padZero(now.getSeconds()));
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   useInterval(() => {
     now = new Date();
@@ -28,6 +28,6 @@ const Time = () => {
   if (width < 1100) {
     clock = <h1>{`${hour}:${min}`}</h1>;
   }
-  return <section className={classes.timer}>{clock}</section>;
+  return <section className={styles.timer}>{clock}</section>;
 };
 export default Time;

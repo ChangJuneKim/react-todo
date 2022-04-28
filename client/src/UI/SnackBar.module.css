@@ -1,0 +1,74 @@
+#show {
+  display: flex;
+  animation: fadein 500ms, fadeout 500ms 2.6s;
+}
+
+#hide {
+  display: none;
+}
+
+.snackbar {
+  position: fixed;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+  min-width: 21.875rem;
+  height: 3.75rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  padding: 0.25rem 1rem;
+  font-size: 1.05rem;
+}
+
+.symbol h1 {
+  flex: 20%;
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.message {
+  flex: 80%;
+  text-align: start;
+  font-weight: bold;
+  text-transform: none;
+}
+
+.snackbar.success {
+  background-color: #00f593;
+}
+
+.snackbar.fail {
+  background-color: #ff0033;
+  color: #eee;
+}
+
+@keyframes fadein {
+  from {
+    transform: translate(-50%, -100%);
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 5%;
+    bottom: 30px;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}

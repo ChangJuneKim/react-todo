@@ -1,0 +1,18 @@
+.label {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.label label {
+  font-weight: 600;
+  color: #333;
+}
+
+.label span {
+  font-size: 0.75rem;
+  color: #f44336;
+  padding-left: 1rem;
+}

@@ -1,19 +1,26 @@
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .todo {
   display: flex;
+  width: 100vw;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
 
 .calendar-container {
-  display: flex;
-  flex-direction: column;
   width: 30%;
   height: 80vh;
-  background-color: #44cc88;
+  background-color: #fff;
+  border: 1px solid #000;
 }
 
 .todo-container {
-  display: inline-block;
   width: 50%;
   height: 80vh;
   background-color: #fff;

@@ -1,46 +1,62 @@
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../store/auth-slice';
+import { setNickname } from '../store/auth-slice';
 
-import classes from './DashBoard.module.css';
+import styles from './DashBoard.module.css';
+import PrivateRoute from './PrivateRoute';
 
-const DashBoard = () => {
+const Login = () => {
+  const { user } = useSelector(state => state.auth);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const nameInputRef = useRef();
+  const nameInputRef = useRef(null);
 
-  const submitHandler = e => {
+  useEffect(() => {
+    if (nameInputRef.current !== null) {
+      nameInputRef.current.focus();
+    }
+
+    if (user !== null) {
+      nameInputRef.current.value = user.username;
+    }
+  }, [user]);
+
+  const submitHandler = async e => {
     e.preventDefault();
     const enteredName = nameInputRef.current.value.trim();
-    const nameIsValid = enteredName !== '';
 
+    const nameIsValid = enteredName !== '';
     if (!nameIsValid) {
-      console.log('이름을 입력해주세요');
+      console.log('이름입력좀');
       return;
     }
-    dispatch(login(enteredName));
+    dispatch(setNickname(enteredName));
     // console.log(enteredName);
     navigate('/todos');
   };
 
   return (
-    <div className='center'>
-      <div className={classes.book}>
-        <h1>My NOTE</h1>
-        <div className='underline'></div>
-        <form onSubmit={submitHandler}>
-          <label htmlFor='name'>name</label>
-          <div className={classes['white-box']}>
-            <input type='text' id='name' ref={nameInputRef} />
-          </div>
-          <button className={classes.btn}>
-            <h3>쓰러가기</h3>
-          </button>
-        </form>
+    <PrivateRoute>
+      <div className='center'>
+        <div className={styles.book}>
+          <h1>My NOTE</h1>
+          <div className={`${styles.underline} underline`}></div>
+          <form onSubmit={submitHandler}>
+            <div className={styles['white-box']}>
+              <label htmlFor='name'>닉네임</label>
+              <input type='text' id='name' ref={nameInputRef} />
+            </div>
+
+            <button className={styles.btn}>
+              <h3>쓰러가기</h3>
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </PrivateRoute>
   );
 };
-export default DashBoard;
+export default Login;

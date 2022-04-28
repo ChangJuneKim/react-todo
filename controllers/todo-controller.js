@@ -28,7 +28,7 @@ export const createTodo = asyncHandler(async (req, res) => {
     username: req.user.username,
   });
 
-  res.status(StatusCodes.CREATED).json({ msg: 'Created a Todo' });
+  res.status(StatusCodes.CREATED).json({ message: 'Created a Todo' });
 });
 
 export const deleteTodo = asyncHandler(async (req, res) => {
@@ -36,7 +36,7 @@ export const deleteTodo = asyncHandler(async (req, res) => {
 
   await Todo.findByIdAndDelete(id);
 
-  res.status(StatusCodes.OK).json({ msg: `Deleted a Todo id : ${id}` });
+  res.status(StatusCodes.OK).json({ message: `Deleted a Todo id : ${id}` });
 });
 
 export const updateTodo = asyncHandler(async (req, res) => {
@@ -49,5 +49,5 @@ export const updateTodo = asyncHandler(async (req, res) => {
     date,
   });
 
-  res.status(StatusCodes.CREATED).json({ msg: `Updated a Todo id : ${id}` });
+  res.status(StatusCodes.CREATED).json({ message: `Updated a Todo id : ${id}` });
 });

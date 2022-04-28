@@ -1,6 +1,8 @@
 .todo-container {
-  background-color: red;
+  background-color: #fff;
   height: 100%;
+  border: 1px solid #000;
+  border-left: none;
 }
 
 @media screen and (max-width: 768px) {
