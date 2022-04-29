@@ -75,6 +75,14 @@ export const todoSlice = createSlice({
     reset: state => {
       Object.assign(state, initialState);
     },
+
+    toggleCheckTodo: (state, action) => {
+      state.todos.forEach(todo => {
+        if (todo._id === action.payload) {
+          todo.checked = !todo.checked;
+        }
+      });
+    },
   },
   extraReducers: builder => {
     builder
@@ -99,7 +107,7 @@ export const todoSlice = createSlice({
       .addCase(getTodos.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos = action.payload;
+        state.todos = action.payload.todos;
       })
       .addCase(getTodos.rejected, (state, action) => {
         state.isLoading = false;
@@ -118,7 +126,7 @@ export const todoSlice = createSlice({
       .addCase(getTodo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
       })
       // 삭제
       .addCase(deleteTodo.pending, state => {
@@ -128,11 +136,12 @@ export const todoSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.todos = state.todos.filter(todo => todo._id !== action.payload.id);
+        state.message = action.payload.message;
       })
       .addCase(deleteTodo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
       })
       // 수정
       .addCase(updateTodo.pending, state => {
@@ -146,10 +155,10 @@ export const todoSlice = createSlice({
       .addCase(updateTodo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
       });
   },
 });
 
-export const { reset } = todoSlice.actions;
+export const { reset, toggleCheckTodo } = todoSlice.actions;
 export default todoSlice.reducer;

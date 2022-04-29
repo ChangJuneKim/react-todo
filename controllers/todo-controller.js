@@ -18,11 +18,11 @@ export const getTodo = asyncHandler(async (req, res) => {
 });
 
 export const createTodo = asyncHandler(async (req, res) => {
-  const { title, content, date } = req.body;
+  const { title, description, date } = req.body;
 
   await Todo.create({
     title,
-    content,
+    description,
     date,
     user_id: req.user.id,
     username: req.user.username,
@@ -41,11 +41,11 @@ export const deleteTodo = asyncHandler(async (req, res) => {
 
 export const updateTodo = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const { title, content, date } = req.body;
+  const { title, description, date } = req.body;
 
   await Todo.findByIdAndUpdate(id, {
     title,
-    content,
+    description,
     date,
   });
 

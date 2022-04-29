@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ### 모든 Todo 가져오기
 GET http://localhost:5000/api/v1/todo
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE1OTIwNWI3OWE1YmNiMTI5NjY4ZSIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMTM2ODkxLCJleHAiOjE2NTEyMjMyOTF9.euf6fSfQ3k4FU2I19jfOnIsiPzb4vXTqDoqVaCzAc-Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2JiYzY3ZDM0ZDFjMjU2ZjViZCIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMjI5NjI3LCJleHAiOjE2NTEzMTYwMjd9.u0RVQdxiJqNzJpb8C2yZLjtOoyf6GBEWlaTEtVRztGs
 
 ### 하나의 Todo 가져오기
 GET http://localhost:5000/api/v1/todo/6266a06b4ae33ba79812db02
@@ -32,11 +32,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE1OTIwN
 ### Todo 만들기
 POST http://localhost:5000/api/v1/todo
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE1OTIwNWI3OWE1YmNiMTI5NjY4ZSIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMTM2ODkxLCJleHAiOjE2NTEyMjMyOTF9.euf6fSfQ3k4FU2I19jfOnIsiPzb4vXTqDoqVaCzAc-Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2JiYzY3ZDM0ZDFjMjU2ZjViZCIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMjI5OTM3LCJleHAiOjE2NTEzMTYzMzd9.LlM0Y-qssCX1O2QiJBLF5yhHbb5p3oExuxLtiISpRwY
 
 {
-  "title" : "테스트",
-  "content" : "테스트요",
+  "title" : "이거맞냐",
+  "description" : "테스트3요",
   "date" : "04282022"
 }
 
@@ -52,9 +52,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY4NTIwY
 }
 
 ### Todo 삭제하기
-DELETE  http://localhost:5000/api/v1/todo/62669e8dc2cfd9f4c002a51b
+DELETE  http://localhost:5000/api/v1/todo/626a59984c0380d17d0a4162
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjY4NTIwYmQ3MmFhNzIxZTE5MmFlOSIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUwODkyMDIyLCJleHAiOjE2NTA4OTU2MjJ9.HUsmKZTl3HoEjKH4KM4Y9jAXepCvcv-KvsaHlYxq0T4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmE1OTIwNWI3OWE1YmNiMTI5NjY4ZSIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMjE3MDIzLCJleHAiOjE2NTEzMDM0MjN9.ceEGhjbgogDUprx4K9tXDCmo0K_83G3YwCJf5A9yLOo
 
 {
   "title" : "테스트",
