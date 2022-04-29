@@ -8,7 +8,6 @@ import { BadRequestError, UnAuthenticatedError } from '../errors/index.js';
 
 export const register = asyncHandler(async (req, res) => {
   const { email, username, password, confirmPassword } = req.body;
-  console.log(req.body);
   if (!email || !username || !password || !confirmPassword) {
     throw new BadRequestError('값을 모두 입력해주세요.');
   }
@@ -18,6 +17,9 @@ export const register = asyncHandler(async (req, res) => {
   }
 
   const userAlreadyExist = await User.findOne({ email });
+  // const userAlreadyExist = await User.where('email').equals(email); // 배열로 반환
+
+  console.log(userAlreadyExist);
 
   if (userAlreadyExist) {
     throw new BadRequestError('이미 가입된 이메일 주소입니다.');

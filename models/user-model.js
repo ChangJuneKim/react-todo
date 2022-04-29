@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { TodoSchema } from './todo-model.js';
 
-const UserSchema = new mongoose.Schema(
+export const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -30,6 +31,8 @@ const UserSchema = new mongoose.Schema(
       minlength: 6,
       select: false,
     },
+
+    todos: [TodoSchema],
   },
   {
     timestamps: true,
@@ -62,6 +65,13 @@ UserSchema.methods.getSignedJwtToken = function () {
   return jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
+};
+
+UserSchema.methods.removeTodo = function (id) {
+  const user = this;
+
+  user.todos.pull({ _id: id });
+  return user.save();
 };
 
 export default mongoose.model('User', UserSchema);

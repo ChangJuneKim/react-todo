@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const TodoSchema = new mongoose.Schema(
+export const TodoSchema = new mongoose.Schema(
   {
     checked: {
       type: Boolean,
@@ -19,15 +19,15 @@ const TodoSchema = new mongoose.Schema(
 
     date: {
       type: Date,
-      default: Date.now,
+      default: () => Date.now(),
     },
 
-    user_id: {
-      type: String,
-      required: true,
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
 
-    username: {
+    nickname: {
       type: String,
       required: true,
     },

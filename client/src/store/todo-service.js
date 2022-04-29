@@ -11,7 +11,6 @@ const createTodo = async (todoData, token) => {
   };
 
   const response = await axios.post(API_URL, todoData, config);
-  console.log(response);
   return response.data;
 };
 
@@ -36,7 +35,6 @@ const getTodo = async (todoId, token) => {
   };
 
   const response = await axios.get(`${API_URL}${todoId}`, config);
-  console.log(response);
   return response.data;
 };
 
@@ -49,7 +47,6 @@ const deleteTodo = async (todoId, token) => {
   };
 
   const response = await axios.delete(`${API_URL}${todoId}`, config);
-  console.log(response);
   return response.data;
 };
 
@@ -62,7 +59,6 @@ const updateTodo = async (todoId, todoData, token) => {
   };
 
   const response = await axios.put(`${API_URL}${todoId}`, todoData, config);
-  console.log(response);
   return response.data;
 };
 
