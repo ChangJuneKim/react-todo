@@ -8,12 +8,12 @@ router
   .route('/')
   //
   .get(auth, getTodos)
-  .post(auth, createTodo);
+  .post(auth, createTodo)
+  .put(auth, deleteTodo);
 
 router
   .route('/:id')
   //
   .get(auth, getTodo)
-  .put(auth, updateTodo)
-  .delete(auth, deleteTodo);
+  .put(auth, updateTodo);
 export default router;

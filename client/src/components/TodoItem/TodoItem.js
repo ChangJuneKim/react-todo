@@ -4,11 +4,12 @@ import { toggleCheckTodo, deleteTodo } from '../../store/todo-slice';
 import { FaTrashAlt, FaPencilAlt } from 'react-icons/fa';
 
 // edit일땐 모달 띄워서 하고 새로 만들땐 생성 페이지에서 하기
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, setIsTouched }) => {
   const { _id, checked, title, description, date } = todo;
   const dispatch = useDispatch();
 
   const switchCompleteHandler = id => {
+    setIsTouched(true);
     dispatch(toggleCheckTodo(id));
   };
 
@@ -22,30 +23,32 @@ const TodoItem = ({ todo }) => {
   };
 
   return (
-    <li className={styles['todo-item']}>
-      <div className={styles['first-line']}>
-        <div className={styles.check}>
-          <input type='checkbox' id={_id} checked={checked} onChange={() => switchCompleteHandler(_id)} />
-          <label htmlFor={_id} className={checked ? styles.active : ''}>
-            <h1>{title}</h1>
-          </label>
+    <>
+      <li className={styles['todo-item']}>
+        <div className={styles['first-line']}>
+          <div className={styles.check}>
+            <input type='checkbox' id={_id} checked={checked} onChange={() => switchCompleteHandler(_id)} />
+            <label htmlFor={_id} className={checked ? styles.checked : styles.unchecked}>
+              <h1>{title}</h1>
+            </label>
+          </div>
+
+          <div className={styles.icons}>
+            <button disabled={checked} onClick={openEditModalHandler}>
+              수정 <FaPencilAlt />
+            </button>
+            <button disabled={checked} onClick={() => deleteTodoHandler(_id)}>
+              삭제 <FaTrashAlt />
+            </button>
+          </div>
         </div>
 
-        <div className={styles.buttons}>
-          <button disabled={checked} onClick={openEditModalHandler}>
-            수정 <FaPencilAlt />
-          </button>
-          <button disabled={checked} onClick={() => deleteTodoHandler(_id)}>
-            삭제 <FaTrashAlt />
-          </button>
+        <div className={`${styles['second-line']} ${checked ? styles.checked : styles.unchecked}`}>
+          <p className={styles.desc}>{description}</p>
+          <p className={styles.date}>{date}</p>
         </div>
-      </div>
-
-      <div className={styles['second-line']}>
-        <p className={styles.desc}>{description}</p>
-        <p className={styles.date}>{date}</p>
-      </div>
-    </li>
+      </li>
+    </>
   );
 };
 export default TodoItem;

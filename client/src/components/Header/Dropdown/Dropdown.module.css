@@ -12,9 +12,9 @@
 .dropdown-items {
   position: absolute;
   top: 80px;
-  right: -1px;
   display: flex;
   flex-direction: column;
+  transform: translateX(10px);
 }
 
 .dropdown-items.show {
@@ -38,6 +38,10 @@
   background-color: #e0e9f5;
 }
 
+.isdrop svg {
+  transform: rotate(180deg);
+}
+
 @media screen and (max-width: 768px) {
   .dropdown {
     width: 80%;
@@ -49,6 +53,7 @@
     border: 1px solid #000;
     border-radius: 0.5rem;
     top: 30%;
+    transform: translateX(0);
   }
   .dropdown-item:last-child {
     display: flex;

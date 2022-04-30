@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { TodoSchema } from './todo-model.js';
+import { NotFoundError } from '../errors/index.js';
 
 export const UserSchema = new mongoose.Schema(
   {
@@ -67,10 +68,20 @@ UserSchema.methods.getSignedJwtToken = function () {
   });
 };
 
-UserSchema.methods.removeTodo = function (id) {
+UserSchema.methods.removeTodo = function (ids) {
   const user = this;
+  console.log(ids);
+  const todoExist = user.todos.filter(todo => {
+    return ids.includes(todo._id.toString());
+  });
 
-  user.todos.pull({ _id: id });
+  if (todoExist.length === 0) {
+    throw new NotFoundError('존재하지 않는 글 입니다.');
+  }
+
+  for (let i = 0; i < ids.length; i++) {
+    user.todos.pull({ _id: ids[i] });
+  }
   return user.save();
 };
 

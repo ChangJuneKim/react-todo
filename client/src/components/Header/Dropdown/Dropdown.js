@@ -27,9 +27,10 @@ const Dropdown = ({ user, closeMenu }) => {
     dispatch(reset());
     navigate('/');
   };
+
   return (
     <li //
-      className={styles.dropdown}
+      className={`${styles.dropdown} ${dropdown ? styles.isdrop : ''}`}
       onClick={dropdownHandler}
     >
       {user.nickname}

@@ -37,7 +37,6 @@
     position: absolute;
     top: -900px;
     left: 0;
-    opacity: 1;
     transition: all 0.5s ease;
   }
 
@@ -59,8 +58,6 @@
     background-color: #f4f1e6;
     left: 0;
     top: 4.7rem;
-    opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
   }
 }

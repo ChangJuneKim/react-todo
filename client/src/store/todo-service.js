@@ -39,14 +39,16 @@ const getTodo = async (todoId, token) => {
 };
 
 // 삭제
-const deleteTodo = async (todoId, token) => {
+const deleteTodo = async (todoIds, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.delete(`${API_URL}${todoId}`, config);
+  const data = { todoIds };
+
+  const response = await axios.put(API_URL, data, config);
   return response.data;
 };
 

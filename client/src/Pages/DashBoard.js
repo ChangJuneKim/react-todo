@@ -41,7 +41,7 @@ const Login = () => {
 
   return (
     <PrivateRoute>
-      <div className='center'>
+      <>
         <div className={styles.book}>
           <h1>My NOTE</h1>
           <div className={`${styles.underline} underline`}></div>
@@ -56,7 +56,7 @@ const Login = () => {
             </button>
           </form>
         </div>
-      </div>
+      </>
     </PrivateRoute>
   );
 };

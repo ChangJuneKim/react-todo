@@ -1,6 +1,26 @@
 .todo-item {
+  position: relative;
   display: flex;
   flex-direction: column;
+  margin: 0.25rem;
+  background-color: #4ea8b5;
+  padding: 1rem;
+  width: 90%;
+  border: 1px solid #e8e8e8;
+  border-bottom-right-radius: 60px 5px;
+  box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.4);
+}
+
+.todo-item:nth-child(4n + 1) {
+  background-color: #cbebba;
+}
+
+.todo-item:nth-child(4n + 2) {
+  background-color: #ffffbf;
+}
+
+.todo-item:nth-child(4n + 3) {
+  background-color: #fedfb3;
 }
 
 .check {
@@ -24,6 +44,11 @@
   justify-content: space-between;
 }
 
-.active {
+.checked {
   text-decoration: line-through;
+  opacity: 0.4;
 }
+
+/* .unchecked {
+  opacity: 1;
+} */

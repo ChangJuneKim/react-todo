@@ -23,36 +23,39 @@ Content-Type: application/json
 
 ### 모든 Todo 가져오기
 GET http://localhost:5000/api/v1/todo
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJlYmFlNDljNDlhMWU0ZWE1YjA0NyIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMjM5OTEwLCJleHAiOjE2NTEzMjYzMTB9.y8bUmNXThhefzaEkGfGnwgpU_ijBJJnT7x27a3rfJrA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNmNWM5YmIyNjRkNjQwZDE5NTI1YyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzA5MDMzLCJleHAiOjE2NTEzOTU0MzN9.LT1OF72911VMPHHe8ZtiBMeGyAY2f1bXiNcTWOZ0z9M
 
 ### 하나의 Todo 가져오기
-GET http://localhost:5000/api/v1/todo/626bec0149c49a1e4ea5b053
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJlYmFlNDljNDlhMWU0ZWE1YjA0NyIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMjM5OTEwLCJleHAiOjE2NTEzMjYzMTB9.y8bUmNXThhefzaEkGfGnwgpU_ijBJJnT7x27a3rfJrA
+GET http://localhost:5000/api/v1/todo/626cf6274f68768bb6109196
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNmNWM5YmIyNjRkNjQwZDE5NTI1YyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzA5MDMzLCJleHAiOjE2NTEzOTU0MzN9.LT1OF72911VMPHHe8ZtiBMeGyAY2f1bXiNcTWOZ0z9M
 
 ### Todo 만들기
 POST http://localhost:5000/api/v1/todo
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJlYmFlNDljNDlhMWU0ZWE1YjA0NyIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMjM5OTEwLCJleHAiOjE2NTEzMjYzMTB9.y8bUmNXThhefzaEkGfGnwgpU_ijBJJnT7x27a3rfJrA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmQyODYwNDQzOWFlZjg2MGQ0NDc5MCIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMzIwOTUxLCJleHAiOjE2NTE0MDczNTF9.HBHVmnxcaNjLnxEjdupxIF6QZAPLlyUrCbq013QdlHw
 
 {
-  "title" : "아~~~~~ 드뎌했다",
-  "description" : "테스트3요",
+  "title" : "되나요",
+  "description" : "ㅇㅇㅇ",
   "date" : "04282022"
 }
 
 ### Todo 수정하기
-PUT http://localhost:5000/api/v1/todo/626bd80c50d8fe53b2d618df
+PUT http://localhost:5000/api/v1/todo/626cf6274f68768bb6109196
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2JiYzY3ZDM0ZDFjMjU2ZjViZCIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMjI5OTM3LCJleHAiOjE2NTEzMTYzMzd9.LlM0Y-qssCX1O2QiJBLF5yhHbb5p3oExuxLtiISpRwY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNmNWM5YmIyNjRkNjQwZDE5NTI1YyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzA3OTc3LCJleHAiOjE2NTEzOTQzNzd9.-PBceDul_nQD2MDkFM5iM2zS4fx_ZgGkOI4zQizGjiQ
 
 {
-  "title" : "수정된",
+  "title" : "수정했지비222332",
   "content" : "테스트요",
   "date" : "May 6 30"
 }
 
 ### Todo 삭제하기
-DELETE  http://localhost:5000/api/v1/todo/626bd7ef50d8fe53b2d618da
+PUT http://localhost:5000/api/v1/todo
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmJjM2JiYzY3ZDM0ZDFjMjU2ZjViZCIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMjI5OTM3LCJleHAiOjE2NTEzMTYzMzd9.LlM0Y-qssCX1O2QiJBLF5yhHbb5p3oExuxLtiISpRwY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmQwZTc0Mjc4YTdmMTkyODg4MTY5NyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzE0MjkyLCJleHAiOjE2NTE0MDA2OTJ9.DuuSjz_zqW-EfXOVvgKuRxsv0JDkPo0dEzr0Cor2vnY
 
+{
+  "todoIds" : "626cf604cab9ba1e61231ca4"
+}

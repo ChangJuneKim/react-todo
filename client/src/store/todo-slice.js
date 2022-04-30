@@ -46,10 +46,13 @@ export const getTodo = createAsyncThunk('todo/get-one', async (id, thunkAPI) => 
 });
 
 // 삭제
-export const deleteTodo = createAsyncThunk('todo/delete', async (id, thunkAPI) => {
+export const deleteTodo = createAsyncThunk('todo/delete', async (ids, thunkAPI) => {
   try {
+    if (ids.constructor.name === 'String') {
+      ids = [ids];
+    }
     const token = thunkAPI.getState().auth.user.token;
-    return await todoService.deleteTodo(id, token);
+    return await todoService.deleteTodo([...ids], token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -60,7 +63,7 @@ export const deleteTodo = createAsyncThunk('todo/delete', async (id, thunkAPI) =
 export const updateTodo = createAsyncThunk('todo/update', async (id, todoData, thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
-    return await todoService.deleteTodo(id, todoData, token);
+    return await todoService.updateTodo(id, todoData, token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -83,6 +86,20 @@ export const todoSlice = createSlice({
         }
       });
     },
+
+    checkAllTodos: (state, action) => {
+      const newTodos = [...state.todos];
+      if (action.payload) {
+        newTodos.forEach(todo => {
+          todo.checked = true;
+        });
+      } else {
+        newTodos.forEach(todo => {
+          todo.checked = !todo.checked;
+        });
+      }
+      state.todos = newTodos;
+    },
   },
   extraReducers: builder => {
     builder
@@ -93,12 +110,12 @@ export const todoSlice = createSlice({
       .addCase(createTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos.push(action.payload);
+        state.todos.push(action.payload.todo);
       })
       .addCase(createTodo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
       })
       // getAll
       .addCase(getTodos.pending, state => {
@@ -121,7 +138,7 @@ export const todoSlice = createSlice({
       .addCase(getTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos = action.payload;
+        state.todos = action.payload.todo;
       })
       .addCase(getTodo.rejected, (state, action) => {
         state.isLoading = false;
@@ -133,9 +150,12 @@ export const todoSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
+        const ids = action.payload.todoIds;
+        const result = state.todos.filter(todo => !ids.includes(todo._id));
+        console.log(result);
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos = state.todos.filter(todo => todo._id !== action.payload.id);
+        state.todos = result;
         state.message = action.payload.message;
       })
       .addCase(deleteTodo.rejected, (state, action) => {
@@ -148,9 +168,16 @@ export const todoSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateTodo.fulfilled, (state, action) => {
+        const newTodo = action.payload.todo;
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos = state.todos.filter(todo => todo._id !== action.payload.id);
+        state.todos = state.todos.map(todo => {
+          if (todo._id !== action.payload.todo.id) {
+            return todo;
+          } else {
+            return newTodo;
+          }
+        });
       })
       .addCase(updateTodo.rejected, (state, action) => {
         state.isLoading = false;
@@ -160,5 +187,5 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { reset, toggleCheckTodo } = todoSlice.actions;
+export const { reset, toggleCheckTodo, checkAllTodos } = todoSlice.actions;
 export default todoSlice.reducer;
