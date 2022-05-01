@@ -60,10 +60,10 @@ export const deleteTodo = createAsyncThunk('todo/delete', async (ids, thunkAPI) 
   }
 });
 
-export const updateTodo = createAsyncThunk('todo/update', async (id, todoData, thunkAPI) => {
+export const updateTodo = createAsyncThunk('todo/update', async (todoData, thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
-    return await todoService.updateTodo(id, todoData, token);
+    return await todoService.updateTodo(todoData, token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -76,7 +76,10 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     reset: state => {
-      Object.assign(state, initialState);
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = '';
     },
 
     toggleCheckTodo: (state, action) => {
@@ -110,7 +113,8 @@ export const todoSlice = createSlice({
       .addCase(createTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos.push(action.payload.todo);
+        state.message = action.payload.message;
+        // state.todos.push(action.payload.todo);
       })
       .addCase(createTodo.rejected, (state, action) => {
         state.isLoading = false;
@@ -152,7 +156,6 @@ export const todoSlice = createSlice({
       .addCase(deleteTodo.fulfilled, (state, action) => {
         const ids = action.payload.todoIds;
         const result = state.todos.filter(todo => !ids.includes(todo._id));
-        console.log(result);
         state.isLoading = false;
         state.isSuccess = true;
         state.todos = result;
@@ -168,16 +171,10 @@ export const todoSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateTodo.fulfilled, (state, action) => {
-        const newTodo = action.payload.todo;
+        const newTodo = action.payload.todo[0];
         state.isLoading = false;
         state.isSuccess = true;
-        state.todos = state.todos.map(todo => {
-          if (todo._id !== action.payload.todo.id) {
-            return todo;
-          } else {
-            return newTodo;
-          }
-        });
+        state.todos = state.todos.map(todo => (todo._id !== newTodo._id ? todo : newTodo));
       })
       .addCase(updateTodo.rejected, (state, action) => {
         state.isLoading = false;

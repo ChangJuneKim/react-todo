@@ -53,14 +53,15 @@ const deleteTodo = async (todoIds, token) => {
 };
 
 // 수정
-const updateTodo = async (todoId, todoData, token) => {
+const updateTodo = async (todoData, token) => {
+  const { todoId, data } = todoData;
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.put(`${API_URL}${todoId}`, todoData, config);
+  const response = await axios.put(`${API_URL}${todoId}`, data, config);
   return response.data;
 };
 

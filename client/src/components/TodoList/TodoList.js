@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './TodoList.module.css';
 import { getTodos, reset, checkAllTodos, deleteTodo } from '../../store/todo-slice';
-import { openSnackBar } from '../../store/snack-slice';
 
 import Spinner from '../../UI/Spinner';
 import TodoItem from '../TodoItem/TodoItem';
+import Button from '../../UI/Button';
 
 const TodoList = () => {
   const [isTouched, setIsTouched] = useState(false);
   const [checkAll, setCheckAll] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { todos, isLoading, isError, message } = useSelector(state => state.todo);
 
   useEffect(() => {
     if (isError) {
-      dispatch(openSnackBar({ type: 'fail', message }));
+      console.log(message);
     }
 
     dispatch(getTodos());
-    if (isError) {
-      return () => {
-        dispatch(reset());
-      };
-    }
+
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, isError, message]);
 
   const checkAllHandler = () => {
@@ -48,7 +49,13 @@ const TodoList = () => {
     return (
       <>
         <h2>일정을 추가해보세요</h2>
-        <button>추가하러가기</button>
+        <Button
+          onClick={() => {
+            navigate('/create');
+          }}
+        >
+          추가하러가기
+        </Button>
       </>
     );
   }
@@ -67,9 +74,9 @@ const TodoList = () => {
             ALL
           </label>
           <h2>아 할일 다 끝냈다!</h2>
-          <button id='delete' onClick={deleteManyHandler}>
-            Delete
-          </button>
+          <Button id='delete' onClick={deleteManyHandler}>
+            삭제
+          </Button>
         </div>
       )}
       {remained > 0 && (
@@ -78,10 +85,10 @@ const TodoList = () => {
             <input type='checkbox' name='all' id='all' onChange={checkAllHandler} checked={checkAll} />
             ALL
           </label>
-          <p>아직 할 일이 {remained}개 남았어요.</p>
-          <button id='delete' onClick={deleteManyHandler}>
-            Delete
-          </button>
+          <h2>아직 할 일이 {remained}개 남았어요.</h2>
+          <Button id='delete' onClick={deleteManyHandler}>
+            삭제
+          </Button>
         </div>
       )}
     </section>

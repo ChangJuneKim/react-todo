@@ -48,7 +48,6 @@ export const createTodo = asyncHandler(async (req, res) => {
 export const deleteTodo = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const { todoIds } = req.body;
-  console.log(todoIds);
   const user = await User.findById(userId);
 
   user.removeTodo(todoIds);

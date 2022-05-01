@@ -70,7 +70,7 @@ UserSchema.methods.getSignedJwtToken = function () {
 
 UserSchema.methods.removeTodo = function (ids) {
   const user = this;
-  console.log(ids);
+
   const todoExist = user.todos.filter(todo => {
     return ids.includes(todo._id.toString());
   });

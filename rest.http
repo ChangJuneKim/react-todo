@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ### 모든 Todo 가져오기
 GET http://localhost:5000/api/v1/todo
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNmNWM5YmIyNjRkNjQwZDE5NTI1YyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzA5MDMzLCJleHAiOjE2NTEzOTU0MzN9.LT1OF72911VMPHHe8ZtiBMeGyAY2f1bXiNcTWOZ0z9M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmQyODYwNDQzOWFlZjg2MGQ0NDc5MCIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMzIwOTUxLCJleHAiOjE2NTE0MDczNTF9.HBHVmnxcaNjLnxEjdupxIF6QZAPLlyUrCbq013QdlHw
 
 ### 하나의 Todo 가져오기
 GET http://localhost:5000/api/v1/todo/626cf6274f68768bb6109196
@@ -41,14 +41,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmQyODYwN
 }
 
 ### Todo 수정하기
-PUT http://localhost:5000/api/v1/todo/626cf6274f68768bb6109196
+PUT http://localhost:5000/api/v1/todo/626e2808faf75ad535fef14b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmNmNWM5YmIyNjRkNjQwZDE5NTI1YyIsInVzZXJuYW1lIjoidGVzdGVyIiwiaWF0IjoxNjUxMzA3OTc3LCJleHAiOjE2NTEzOTQzNzd9.-PBceDul_nQD2MDkFM5iM2zS4fx_ZgGkOI4zQizGjiQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNmQyODYwNDQzOWFlZjg2MGQ0NDc5MCIsInVzZXJuYW1lIjoi6rmA7LC97KSAIiwiaWF0IjoxNjUxMzIwOTUxLCJleHAiOjE2NTE0MDczNTF9.HBHVmnxcaNjLnxEjdupxIF6QZAPLlyUrCbq013QdlHw
 
 {
-  "title" : "수정했지비222332",
-  "content" : "테스트요",
-  "date" : "May 6 30"
+  "title" : "수정했지asdasdasdasdasdasdasdasdasdasdasdasdasd비222332",
+  "content" : "테스asdasdasdasdasdasdasd트요",
+  "date" : "20220305"
 }
 
 ### Todo 삭제하기

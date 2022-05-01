@@ -24,7 +24,7 @@
 .todo-container {
   width: 50%;
   height: 80vh;
-  background-color: #fff;
+  background-image: url('https://mblogthumb-phinf.pstatic.net/MjAyMDEyMTlfMTg5/MDAxNjA4MzEwNjE3OTMw.C2kDke8JbxPHq9DR1NGFULEvua9_YQjfL9TPpaGjKeUg.UAdhUsGouN88uu0AgVahK0C5fljRmY3ilPYCXBpcnqYg.JPEG.nk920218/SE-986ca6f0-5076-4e64-9de9-a3d84e25bcc0.jpg?type=w800');
 }
 
 @media screen and (max-width: 768px) {

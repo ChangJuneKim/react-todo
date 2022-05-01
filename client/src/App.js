@@ -4,6 +4,7 @@ import DashBoard from './Pages/DashBoard';
 import TodoDetail from './Pages/TodoDetail';
 import Todos from './Pages/Todos';
 import Register from './Pages/Register';
+import CreateTodo from './Pages/CreateTodo';
 
 import Header from './components/Header/Header';
 import SnackBar from './UI/SnackBar';
@@ -19,6 +20,7 @@ function App() {
           <Route path='register' element={<Register />} />
           <Route path='todos' element={<Todos />} />
           <Route path='todos/:id' element={<TodoDetail />} />
+          <Route path='create' element={<CreateTodo />} />
         </Routes>
       </main>
     </>
